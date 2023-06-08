@@ -19,6 +19,14 @@ const navigate = useNavigate();
 
   const handleSubmit = (e) =>{
     e.preventDefault();
+    if (userData.name.length < 2) {
+      alert('Name must be at least 2 characters long.');
+      return;
+    }
+else if (! userData.name.match(/^[A-Za-z ]+$/)){
+		alert("Name must not contain special characters");
+		return;
+	}
     try{
       Axios.post('https://contact-form-fmomqe7cp-2021niyatigaonkar-vesacin.vercel.app/sendmail',{
         email:userData.email,
